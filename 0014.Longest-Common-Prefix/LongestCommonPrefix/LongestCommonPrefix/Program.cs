@@ -49,8 +49,9 @@ namespace LongestCommonPrefix
 
         static void Main(string[] args)
         {
-            string[] strArray = { "flower", "flow", "flight" }; 
-            Console.WriteLine(LongestCommonPrefix(strArray));
+            string[] strArray = { "flower", "flow", "faight" };
+            Console.WriteLine(VerticalScanning.LongestCommonPrefix(strArray));
+            //Console.WriteLine(LongestCommonPrefix(strArray));
             Console.ReadKey();
         }
     }
