@@ -19,7 +19,9 @@ namespace TreeSerialization
         // Encodes a tree to a single string.
         public string serialize(TreeNode root)
         {
-            return "";
+            Encode(root, new StringBuilder());
+
+            return string.Empty;
         }
 
         // Decodes your encoded data to tree.
@@ -28,10 +30,12 @@ namespace TreeSerialization
             return new TreeNode(0);
         }
 
-        public StringBuilder Encode(TreeNode root, StringBuilder sb)
+        public void Encode(TreeNode root, StringBuilder sb)
         {
             if (root == null)
+            {
                 sb.Append("null").Append(",");
+            }
             else
             {
                 sb.Append(root.val).Append(",");
@@ -39,7 +43,7 @@ namespace TreeSerialization
                 Encode(root.right, sb);
             }
 
-            return sb;
+            //return sb;
         }
 
 
@@ -59,11 +63,24 @@ namespace TreeSerialization
 
         }
     }
+
+    //Driver method for testing
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            TreeNode root = new TreeNode(1);
+            root.left = new TreeNode(2);
+            root.right = new TreeNode(3);
+            root.right.left = new TreeNode(4);
+            root.right.right = new TreeNode(5);
+
+            Codec codec = new Codec();
+            string encodeString = codec.serialize(root);
+            Console.WriteLine(encodeString);
+
+            Console.ReadKey();
+            //Console.WriteLine("Hello World!");
         }
     }
 }
