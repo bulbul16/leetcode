@@ -19,15 +19,17 @@ namespace TreeSerialization
         // Encodes a tree to a single string.
         public string serialize(TreeNode root)
         {
-            Encode(root, new StringBuilder());
-
-            return string.Empty;
+            StringBuilder sb = new StringBuilder();
+            Encode(root, sb);
+            return sb.Remove(sb.Length-1,1).ToString(); // Remove last comma
         }
 
         // Decodes your encoded data to tree.
         public TreeNode deserialize(string data)
         {
-            return new TreeNode(0);
+            string[] strArray   = data.Split(',');
+            Queue<string> dqueue = new Queue<string>(strArray);
+            return Decode(dqueue);
         }
 
         public void Encode(TreeNode root, StringBuilder sb)
@@ -52,7 +54,7 @@ namespace TreeSerialization
             if (queue == null) return null;
             string val = queue.Dequeue();
 
-            if (val == null) return null;
+            if (val == "null") return null;
             else
             {
                 TreeNode node = new TreeNode(Convert.ToInt32(val));
@@ -78,6 +80,8 @@ namespace TreeSerialization
             Codec codec = new Codec();
             string encodeString = codec.serialize(root);
             Console.WriteLine(encodeString);
+
+            TreeNode node = codec.deserialize(encodeString);
 
             Console.ReadKey();
             //Console.WriteLine("Hello World!");
