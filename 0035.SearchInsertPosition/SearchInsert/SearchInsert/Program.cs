@@ -12,7 +12,7 @@ namespace SearchInsert
         public int BinarySearch(int[] data, int lowerBound, int uppperBound, int item)
         {
             if (lowerBound > uppperBound)
-                return lowerBound;
+                return lowerBound; // Location where would be
 
             int mid = (lowerBound + uppperBound) / 2;
 
