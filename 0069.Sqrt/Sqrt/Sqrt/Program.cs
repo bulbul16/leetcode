@@ -8,6 +8,9 @@ namespace Sqrt
         {
             if (x < 2) return x;
             int left = 2;
+
+            // squre root value cannot be greater than half of its value
+            // so we consider right value as x / 2
             int right = x / 2;
 
             while(left <= right)
@@ -34,7 +37,6 @@ namespace Sqrt
             Console.WriteLine(solution.MySqrt(16));
             Console.WriteLine(solution.MySqrt(18));
             Console.ReadKey();
-            //Console.WriteLine("Hello World!");
         }
     }
 }
