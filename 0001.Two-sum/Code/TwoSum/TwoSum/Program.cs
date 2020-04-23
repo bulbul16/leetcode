@@ -38,7 +38,7 @@ namespace TwoSum
     /// </summary>
     public class Solution2
     {
-           public static int[] TwoSum(int[] nums, int target)
+        public static int[] TwoSum(int[] nums, int target)
         {
 
             //For fast retrival
@@ -47,8 +47,11 @@ namespace TwoSum
 
             for (int i = 1; i < nums.Length; i++)
             {
-                int diff = target - nums[i]; //difference or complement
+                // difference or complement
+                int diff = target - nums[i];
 
+                // if this complement present in the list 
+                // return the index of the difference and current number
                 if (hashtable.Contains(diff))
                 {
                     return new int[2] { (int)hashtable[diff], i };
